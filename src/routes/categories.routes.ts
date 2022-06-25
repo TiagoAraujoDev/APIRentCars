@@ -1,8 +1,8 @@
 import { Router } from "express";
 
-import { CategoriesRepositories } from "../repositories/categoriesRepositories";
+import { CategoriesRepositories } from "../modules/repositories/CategoriesRepository";
 // import { PostgresCategoriesRepository } from "../repositories/PostgresCategoriesRepository";
-import { CreateCategoryService } from "../services/CreateCategoryService";
+import { CreateCategoryService } from "../modules/services/CreateCategoryService";
 
 const categoriesRoutes = Router();
 const categoriesRepositories = new CategoriesRepositories();
