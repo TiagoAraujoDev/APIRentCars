@@ -4,6 +4,6 @@ import { ListCategoryUseCase } from "./ListCategoryUseCase";
 
 const categoriesRepository = CategoriesRepository.getInstance();
 const listCategoryUseCase = new ListCategoryUseCase(categoriesRepository);
-const listCategoryContorller = new ListCategoryController(listCategoryUseCase);
+const listCategoryController = new ListCategoryController(listCategoryUseCase);
 
-export { listCategoryContorller };
+export { listCategoryController };
