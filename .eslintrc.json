@@ -21,6 +21,12 @@
         "prettier"
     ],
     "rules": {
+      "no-use-before-define": ["error", {
+        "functions": false,
+        "classes": false,
+        "variables": false,
+        "allowNamedExports": false
+      }],
       "camelcase": "off",
       "import/no-unresolved": "error",
       "@typescript-eslint/naming-convention": [
