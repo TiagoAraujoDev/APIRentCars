@@ -2,12 +2,13 @@ import { SpecificationsRepository } from "../../repositories/implementations/Spe
 import { ListSpecificationController } from "./ListSpecificationController";
 import { ListSpecificationUseCase } from "./ListSpecificationUseCase";
 
-const specificationsRepository = SpecificationsRepository.getInstance();
-const listSpecificationUseCase = new ListSpecificationUseCase(
-  specificationsRepository
-);
-const listSpecificationController = new ListSpecificationController(
-  listSpecificationUseCase
-);
-
-export { listSpecificationController };
+export default (): ListSpecificationController => {
+  const specificationsRepository = new SpecificationsRepository();
+  const listSpecificationUseCase = new ListSpecificationUseCase(
+    specificationsRepository
+  );
+  const listSpecificationController = new ListSpecificationController(
+    listSpecificationUseCase
+  );
+  return listSpecificationController;
+};
