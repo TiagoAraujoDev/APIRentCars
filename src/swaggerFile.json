@@ -6,14 +6,14 @@
     "version": "1.0.0",
     "contact": {
       "email": "tiagoaraujo@gmail.com"
-    } 
+    }
   },
   "paths": {
     "/categories": {
       "post": {
-        "tag":["Category"],
+        "tags": ["Category"],
         "summary": "Create a category",
-        "description": "Create a new category",
+        "description": "Receive a name and a description and create a new category",
         "requestBody": {
           "content": {
             "application/json": {
@@ -48,7 +48,7 @@
         "tags": ["Category"],
         "summary": "List all categories",
         "description": "List all categories",
-        "responses":{
+        "responses": {
           "200": {
             "description": "success",
             "content": {
@@ -69,6 +69,98 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/specifications": {
+      "post": {
+        "tags": ["specification"],
+        "summary": "Create a specification",
+        "description": "Receive a name and a description and create a specification",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Specification created"
+          },
+          "500": {
+            "description": "Specification already exist!"
+          }
+        }
+      },
+      "get": {
+        "tags": ["specification"],
+        "summary": "List all specifications",
+        "description": "List all specfications",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "Content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/import": {
+      "post": {
+        "tags": ["Import"],
+        "summary": "Import a file with categeries",
+        "description": "Receive a file with a list or just one category and upload the category/categories",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "properties": {
+                  "file": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "binary"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Unexpected error!"
           }
         }
       }
