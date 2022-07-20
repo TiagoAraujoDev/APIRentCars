@@ -1,6 +1,7 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
 
+import { User } from "../modules/accounts/User";
 import { Category } from "../modules/cars/entities/Category";
 import { Specification } from "../modules/cars/entities/Specification";
 
@@ -13,7 +14,7 @@ export const appDataSource = new DataSource({
   username: "docker",
   password: "rentcars123",
   database: "rentcarsdb",
-  entities: [Category, Specification],
+  entities: [Category, Specification, User],
   migrations: ["./src/database/migrations/*.ts"],
 });
 
