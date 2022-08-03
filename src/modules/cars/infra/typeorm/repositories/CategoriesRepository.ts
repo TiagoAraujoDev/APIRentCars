@@ -1,10 +1,10 @@
-import { appDataSource } from "database";
 import { Repository } from "typeorm";
 
 import {
   ICategoriesRepository,
   ICreateCategoryDTO,
 } from "@modules/cars/repositories/ICategoriesRepository";
+import { appDataSource } from "@shared/infra/typeorm";
 
 import { Category } from "../entities/Category";
 
