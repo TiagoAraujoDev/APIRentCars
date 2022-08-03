@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es2016",
     "module": "commonjs",
-    "resolveJsonModule": true,
+    "rootDir": "./",
     "baseUrl": "./src",
     "paths": {
       "@modules/*": ["modules/*"],
@@ -11,9 +11,10 @@
       "@errors/*": ["errors/*"]
     },
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true
   }
 }
