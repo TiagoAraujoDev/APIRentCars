@@ -13,7 +13,7 @@ class CarsRepositoryInMemory implements ICarsRepository {
     fine_amount,
     brand,
     category_id,
-  }): Promise<void> {
+  }): Promise<Car> {
     const car = new Car();
 
     Object.assign(car, {
@@ -27,6 +27,14 @@ class CarsRepositoryInMemory implements ICarsRepository {
     });
 
     this.cars.push(car);
+
+    return car;
+  }
+
+  async findByLicensePlate(license_plate: string): Promise<Car> {
+    const car = this.cars.find((car) => car.license_plate === license_plate);
+
+    return car;
   }
 }
 
