@@ -1,13 +1,14 @@
+import "reflect-metadata";
 import express, { NextFunction, Request, Response } from "express";
 import "express-async-errors";
 import swaggerUi from "swagger-ui-express";
 
 import { AppError } from "@shared/errors/AppError";
 
-import "@shared/infra/typeorm";
 import "@shared/container";
 
 import swaggerFile from "../../../swaggerFile.json";
+import { createConnection } from "../typeorm";
 import { router } from "./routes";
 
 const app = express();
@@ -27,5 +28,7 @@ app.use(
     });
   }
 );
+
+createConnection("database_rentcars");
 
 app.listen(3333, () => console.log("Server is running..."));
