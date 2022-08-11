@@ -10,8 +10,8 @@ export const appDataSource = new DataSource({
   username: "docker",
   password: "rentcars123",
   database: "rentcarsdb",
-  synchronize: true,
-  logging: true,
+  // synchronize: true,
+  // logging: true,
   entities: ["./src/modules/**/entities/*.ts"],
   migrations: ["./src/shared/infra/typeorm/migrations/*.ts"],
 });
