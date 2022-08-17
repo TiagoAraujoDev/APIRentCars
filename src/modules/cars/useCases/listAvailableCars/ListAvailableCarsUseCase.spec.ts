@@ -25,7 +25,6 @@ describe("List Cars", () => {
     });
     const cars = await listAvailableCarsUseCase.execute({});
 
-    console.log(cars);
     expect(cars).toEqual([car]);
   });
 
@@ -43,7 +42,6 @@ describe("List Cars", () => {
       brand: "Land Rover",
     });
 
-    console.log(cars);
     expect(cars).toEqual([car]);
   });
 
@@ -59,7 +57,6 @@ describe("List Cars", () => {
     });
     const cars = await listAvailableCarsUseCase.execute({ name: "Onix" });
 
-    console.log(cars);
     expect(cars).toEqual([car]);
   });
 
@@ -77,7 +74,6 @@ describe("List Cars", () => {
       category_id: "8l90e91e-f739-4dd1-bif0-39d3491cbeuo",
     });
 
-    console.log(cars);
     expect(cars).toEqual([car]);
   });
 });
