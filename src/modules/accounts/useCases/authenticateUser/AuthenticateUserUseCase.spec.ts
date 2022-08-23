@@ -17,6 +17,7 @@ describe("Authenticate User", () => {
       usersRepositoryInMemory
     );
   });
+
   it("Should be able to authenticate an user", async () => {
     const user: ICreateUserDTO = {
       name: "Jonh Doe",

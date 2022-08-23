@@ -36,7 +36,7 @@ describe("List Cars", () => {
       daily_rate: 250,
       fine_amount: 300,
       brand: "Land Rover",
-      category_id: "8l90e91e-f739-4dd1-bif0-39d3491cbeuo",
+      category_id: "d9dhf-9helkd0-djdbs93-nxb7x8x9v",
     });
     const cars = await listAvailableCarsUseCase.execute({
       brand: "Land Rover",
@@ -53,7 +53,7 @@ describe("List Cars", () => {
       daily_rate: 150,
       fine_amount: 200,
       brand: "Chevrolet",
-      category_id: "8l90e91e-f739-4dd1-bif0-39d3491cbeuo",
+      category_id: "jd0d8d0-aksd0d867-dd98s9s8-d8d9d87",
     });
     const cars = await listAvailableCarsUseCase.execute({ name: "Onix" });
 
