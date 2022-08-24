@@ -21,7 +21,7 @@ export async function createConnection(
 ): Promise<DataSource> {
   const dataSource = await appDataSource
     .setOptions({
-      host,
+      host: process.env.NODE_ENV === "test" ? "localhost" : host,
       database:
         process.env.NODE_ENV === "test" ? "rentcars_test" : "rentcarsdb",
     })
