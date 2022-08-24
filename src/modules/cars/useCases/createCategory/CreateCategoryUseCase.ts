@@ -1,5 +1,6 @@
-import { AppError } from "@shared/errors/AppError";
 import { inject, injectable } from "tsyringe";
+
+import { AppError } from "@shared/errors/AppError";
 
 import { ICategoriesRepository } from "../../repositories/ICategoriesRepository";
 

@@ -10,7 +10,8 @@ let connection: DataSource;
 
 describe("Create Category Controller", () => {
   beforeAll(async () => {
-    connection = await createConnection("localhost");
+    connection = await createConnection();
+    console.log(connection.options);
     await connection.runMigrations();
 
     const password = await hash("admin", 8);
@@ -36,7 +37,7 @@ describe("Create Category Controller", () => {
     const { token } = responseToken.body;
 
     const response = await request(app)
-      .get("/categories")
+      .post("/categories")
       .send({
         name: "Category supertest",
         description: "Category supertest",
@@ -45,6 +46,6 @@ describe("Create Category Controller", () => {
         Authorization: `Bearer ${token}`,
       });
 
-    expect(response.status).toBe(200);
+    expect(response.status).toBe(201);
   });
 });
