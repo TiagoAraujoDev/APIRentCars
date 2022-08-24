@@ -19,7 +19,13 @@ export const appDataSource = new DataSource({
 export async function createConnection(
   host = "localhost"
 ): Promise<DataSource> {
-  const dataSource = await appDataSource.setOptions({ host }).initialize();
+  const dataSource = await appDataSource
+    .setOptions({
+      host,
+      database:
+        process.env.NODE_ENV === "test" ? "rentcars_test" : "rentcarsdb",
+    })
+    .initialize();
   console.log("Database initialize");
   return dataSource;
 }
