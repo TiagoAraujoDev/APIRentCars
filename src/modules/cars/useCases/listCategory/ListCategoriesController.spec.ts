@@ -8,7 +8,7 @@ import { createConnection } from "@shared/infra/typeorm";
 
 let connection: DataSource;
 
-describe("Create Category Controller", () => {
+describe("List Categories Controller", () => {
   beforeAll(async () => {
     connection = await createConnection();
     await connection.runMigrations();
@@ -27,7 +27,7 @@ describe("Create Category Controller", () => {
     await connection.destroy();
   });
 
-  it("Should be able to create a new category", async () => {
+  it("Should be able to list all Categories", async () => {
     const responseToken = await request(app).post("/sessions").send({
       email: "admin@rentcars.com.br",
       password: "admin",
@@ -35,7 +35,7 @@ describe("Create Category Controller", () => {
 
     const { token } = responseToken.body;
 
-    const response = await request(app)
+    await request(app)
       .post("/categories")
       .send({
         name: "Category supertest",
@@ -45,27 +45,11 @@ describe("Create Category Controller", () => {
         Authorization: `Bearer ${token}`,
       });
 
-    expect(response.status).toBe(201);
-  });
+    const response = await request(app).get("/categories").send();
 
-  it("Should not be able to create a category that already exist", async () => {
-    const responseToken = await request(app).post("/sessions").send({
-      email: "admin@rentcars.com.br",
-      password: "admin",
-    });
-
-    const { token } = responseToken.body;
-
-    const response = await request(app)
-      .post("/categories")
-      .send({
-        name: "Category supertest",
-        description: "Category supertest",
-      })
-      .set({
-        Authorization: `Bearer ${token}`,
-      });
-
-    expect(response.status).toBe(400);
+    expect(response.status).toBe(200);
+    expect(response.body.length).toBe(1);
+    expect(response.body[0]).toHaveProperty("id");
+    expect(response.body[0].name).toEqual("Category supertest");
   });
 });
