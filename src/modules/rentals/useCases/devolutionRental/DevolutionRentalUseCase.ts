@@ -51,7 +51,7 @@ class DevolutionRentalUseCase {
 
     let total = 0;
 
-    if (delay > daily) {
+    if (delay < 0) {
       const calculate_fine = delay * car.fine_amount;
       total = calculate_fine;
     }
