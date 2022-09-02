@@ -27,18 +27,18 @@ describe("Create a car", () => {
   });
 
   it("Should not be able to create a car with the same license plate", async () => {
-    expect(async () => {
-      await createCarUseCase.execute({
-        name: "Citroen C3",
-        description: "A regular car for the city",
-        daily_rate: 90,
-        license_plate: "KDJ-2989",
-        fine_amount: 70,
-        brand: "Citroen",
-        category_id: "1927-su97-shgvf-j3hb39",
-      });
+    await createCarUseCase.execute({
+      name: "Citroen C3",
+      description: "A regular car for the city",
+      daily_rate: 90,
+      license_plate: "KDJ-2989",
+      fine_amount: 70,
+      brand: "Citroen",
+      category_id: "1927-su97-shgvf-j3hb39",
+    });
 
-      await createCarUseCase.execute({
+    await expect(
+      createCarUseCase.execute({
         name: "Citroen C3",
         description: "A regular car for the city",
         daily_rate: 90,
@@ -46,8 +46,8 @@ describe("Create a car", () => {
         fine_amount: 70,
         brand: "Citroen",
         category_id: "1927-su97-shgvf-j3hb39",
-      });
-    }).rejects.toBeInstanceOf(AppError);
+      })
+    ).rejects.toEqual(new AppError("Car already exist!"));
   });
 
   it("Should be able to create a new car with availability by default", async () => {
