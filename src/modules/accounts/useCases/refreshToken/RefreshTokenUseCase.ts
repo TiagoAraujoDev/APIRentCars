@@ -21,9 +21,10 @@ class RefreshTokenUseCase {
   ) {}
 
   async execute(token: string): Promise<string> {
-    const { email, sub } = verify(token, auth.secret_refresh_token) as IPayload;
-
-    const user_id = sub;
+    const { email, sub: user_id } = verify(
+      token,
+      auth.secret_refresh_token
+    ) as IPayload;
 
     const userToken =
       await this.usersTokensRepository.findByUserIdAndRefreshToken(
@@ -42,7 +43,7 @@ class RefreshTokenUseCase {
     );
 
     const refresh_token = sign({ email }, auth.secret_refresh_token, {
-      subject: sub,
+      subject: user_id,
       expiresIn: auth.expires_in_refresh_token,
     });
 
