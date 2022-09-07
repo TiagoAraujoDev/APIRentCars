@@ -1,3 +1,4 @@
+import * as dotenv from "dotenv";
 import { resolve } from "path";
 import { inject, injectable } from "tsyringe";
 import { v4 as uuid } from "uuid";
@@ -23,6 +24,7 @@ class SendForgotPasswordMailUseCase {
 
   async execute(email: string): Promise<void> {
     const user = await this.usersRepository.findByEmail(email);
+    dotenv.config();
 
     const templatePath = resolve(
       __dirname,
