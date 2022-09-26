@@ -2,8 +2,6 @@ import { inject, injectable } from "tsyringe";
 
 import { ICarsImagesRepository } from "@modules/cars/repositories/ICarsImagesRepository";
 
-import { deleteFile } from "../../../../utils/file";
-
 interface IRequest {
   car_id: string;
   images_name: string[];
@@ -18,10 +16,6 @@ class UploadCarImagesUseCase {
   async execute({ car_id, images_name }: IRequest): Promise<void> {
     images_name.map(async (image) => {
       await this.CarsImagesRepository.create(car_id, image);
-
-      if (image) {
-        await deleteFile(`./tmp/cars/${image}`);
-      }
     });
   }
 }
