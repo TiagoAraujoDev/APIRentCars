@@ -20,7 +20,7 @@ class LocalStorageProvider implements IStorageProvider {
 
     try {
       await fs.promises.stat(filename);
-    } catch (err) {
+    } catch {
       return;
     }
 
