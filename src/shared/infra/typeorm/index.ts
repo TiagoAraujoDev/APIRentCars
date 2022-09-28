@@ -12,8 +12,8 @@ export const appDataSource = new DataSource({
   database: "rentcarsdb",
   // synchronize: true,
   // logging: true,
-  entities: ["./src/modules/**/entities/*.ts"],
-  migrations: ["./src/shared/infra/typeorm/migrations/*.ts"],
+  entities: ["./dist/modules/**/entities/*.js"],
+  migrations: ["./dist/shared/infra/typeorm/migrations/*.js"],
 });
 
 export async function createConnection(

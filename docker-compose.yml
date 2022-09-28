@@ -6,10 +6,10 @@ services:
     container_name: rentcarsdb
     restart: always
     ports:
-      - 5432:5432
+      - 43641:5432
     environment:
       - POSTGRES_USER=docker
-      - POSTGRES_PASSWORD=rentcars123
+      - POSTGRES_PASSWORD=Zaq1xsw2cde3@#
       - POSTGRES_DB=rentcarsdb
     volumes:
       - pgdata:/data/postgres
