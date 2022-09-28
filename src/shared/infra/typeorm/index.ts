@@ -5,23 +5,18 @@ yarn typeorm migration:create src/shared/infra/typeorm/migrations/NOME_DA_MIGRAT
 
 export const appDataSource = new DataSource({
   type: "postgres",
-  host: "database_rentcars",
+  host: "localhost",
   port: 5432,
   username: "docker",
   password: "rentcars123",
   database: "rentcarsdb",
-  // synchronize: true,
-  // logging: true,
   entities: ["./dist/modules/**/entities/*.js"],
   migrations: ["./dist/shared/infra/typeorm/migrations/*.js"],
 });
 
-export async function createConnection(
-  host = "localhost"
-): Promise<DataSource> {
+export async function createConnection(): Promise<DataSource> {
   const dataSource = await appDataSource
     .setOptions({
-      host: process.env.NODE_ENV === "test" ? "localhost" : host,
       database:
         process.env.NODE_ENV === "test" ? "rentcars_test" : "rentcarsdb",
     })
