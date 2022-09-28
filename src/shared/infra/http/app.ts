@@ -25,6 +25,6 @@ app.use("/cars", express.static(`${upload.tmpFolder}/cars`));
 app.use(router);
 app.use(error);
 
-createConnection("database_rentcars");
+createConnection();
 
 export { app };
